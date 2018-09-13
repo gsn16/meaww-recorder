@@ -2,13 +2,43 @@
 <html>
 
 <head>
-  <title>̥̥Title</title>
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Title</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
   <link rel="stylesheet" href="./css/index.css" />
 </head>
 
 <body>
-  hello world..
+  <section id="welcome-texts">
+    <h4 id="welcome-text-1" class="welcome-text">hey there</h4>
+    <h4 id="welcome-text-2" class="welcome-text">so you want to record from your webcam?</h4>
+  </section>
+
+  <section id="detect-and-start">
+    <div id="detect-text"></div>
+    <button id="start-video-button" class="button">Start</button>
+  </section>
+
+  <section class="video-area">
+    <video id='video'> </video>
+
+    <button id="video-record-button" class="button">Record</button>
+    <button id="video-stop-button" class="button">Stop</button>
+
+  </section>
+
+
+
+
+
+
+
+
 </body>
 
 <script src="./js/index.js"></script>
+
 </html>

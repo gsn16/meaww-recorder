@@ -84,3 +84,29 @@ th {
 
 /* END: minireset.css */
 
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-family: 'Montserrat', sans-serif;
+  color: #333333;
+}
+
+.welcome-text {
+  /* font-size: 1.25em; */
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.detect-text {
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.video-area {
+  display: none;
+}
+
+#start-video-button {
+  display: none;
+}
