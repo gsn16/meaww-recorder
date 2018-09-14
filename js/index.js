@@ -1,18 +1,61 @@
-let recordVideo = () => {
+const video = document.getElementById('video');
+let recorder;
+let STREAM;
+
+let startVideoRecording = () => {
+
+  initializeUserMedia();
+  document.getElementById('record-start-button').classList.add('disabled');
+
+  video.setAttribute('controls', 'true');
+  video.muted = true;
+
+  recorder = new RecordRTCPromisesHandler(STREAM, {
+    mimeType: 'video/webm',
+    bitsPerSecond: 128000
+  });
+
+  recorder.startRecording().then(function () {
+    console.info('Recording video ...');
+  }).catch(function (error) {
+    console.error('Cannot start video recording: ', error);
+  });
+
+  recorder.stream = STREAM;
+
+  document.getElementById('record-stop-button').classList.remove('disabled');
 
 }
 
 let stopVideoRecording = () => {
-  
+
+  document.getElementById('record-stop-button').classList.add('disabled');
+
+  recorder.stopRecording().then(function () {
+    console.info('stopRecording success');
+
+    // Retrieve recorded video as blob and display in the preview element
+    var blob = recorder.getBlob();
+    video.src = URL.createObjectURL(blob);
+    video.play();
+
+    video.muted = false;
+
+    recorder.stream.stop();
+
+    document.getElementById('record-start-button').classList.remove('disabled');
+    video.setAttribute('controls', 'true');
+  })
 }
 
 let streamWebcam = (stream) => {
+  STREAM = stream;
   document.getElementById('welcome-texts').style.display = "none";
   document.getElementById('detect-and-start').style.display = "none";
   document.getElementsByClassName('video-area')[0].style.display = "block";
-  const video = document.getElementById('video');
   video.src = window.URL.createObjectURL(stream);
   video.play();
+  video.muted = true;
 }
 
 let errorHandler = (e) => {
@@ -31,7 +74,7 @@ let isUserMediaDetected = (detected) => {
   }
 }
 
-let showVideoArea = () => {
+let initializeUserMedia = () => {
   navigator.getUserMedia({ video: true, audio: true }, streamWebcam, errorHandler);
 }
 
@@ -64,10 +107,10 @@ let onboard = () => {
 
 
 window.onload = () => {
-  document.getElementById('start-video-button').onclick = showVideoArea;
-  document.getElementById('video-record-button').onclick = recordVideo;
-  document.getElementById('video-stop-button').onclick = stopVideoRecording;
-  
+  document.getElementById('start-video-button').onclick = initializeUserMedia;
+  document.getElementById('record-start-button').onclick = startVideoRecording;
+  document.getElementById('record-stop-button').onclick = stopVideoRecording;
+
   onboard();
 }
 

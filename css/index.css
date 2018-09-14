@@ -1,6 +1,7 @@
 /* minireset.css */
 
 /*! minireset.css v0.0.3 | MIT License | github.com/jgthms/minireset.css */
+
 html,
 body,
 p,
@@ -53,7 +54,9 @@ html {
   box-sizing: border-box;
 }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
@@ -109,4 +112,10 @@ body {
 
 #start-video-button {
   display: none;
+}
+
+.disabled {
+  opacity: 0.7;
+  pointer-events: none;
+  cursor: default;
 }
