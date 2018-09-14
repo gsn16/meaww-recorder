@@ -97,6 +97,7 @@ th {
 .button {
   display: inline-block;
   padding: 9px 18px 11px;
+  margin: 0 5px;
   font-size: 18px;
   font-weight: 600;
   letter-spacing: 0.9px;
@@ -131,6 +132,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   font-family: 'Montserrat', sans-serif;
+  word-spacing: 1px;
   color: #333333;
   text-align: center;
 }
@@ -152,6 +154,10 @@ body {
 .video-area {
   margin: 3rem auto;
   display: none;
+}
+
+.video-controls {
+  margin: 1rem auto;
 }
 
 #start-video-button {
