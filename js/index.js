@@ -9,6 +9,7 @@ let startVideoRecording = () => {
 
   video.setAttribute('controls', 'true');
   video.muted = true;
+  video.currentTime = 0;
 
   recorder = new RecordRTCPromisesHandler(STREAM, {
     mimeType: 'video/webm',
@@ -61,17 +62,9 @@ let streamWebcam = (stream) => {
 let errorHandler = (e) => {
 
   if (e.name === 'NotAllowedError') {
-    document.getElementById('detect-text').innerHTML = 'You should have given permission to use the webcam';
+    document.getElementById('detect-text').innerHTML = 'You should have given permission to use the webcam 🤷‍';
   }
   console.log('error: ' + e.name);
-}
-
-let isUserMediaDetected = (detected) => {
-  if (detected) {
-    document.getElementById('detect-text').innerHTML = 'cool, let\'s start';
-  } else {
-    document.getElementById('detect-text').innerHTML = 'uh, could not detect a webcam. sorry 🤷‍';
-  }
 }
 
 let initializeUserMedia = () => {
@@ -80,14 +73,18 @@ let initializeUserMedia = () => {
 
 
 let detectUserMedia = () => {
+  const detectText = document.getElementById('detect-text');
+
   navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.oGetUserMedia || navigator.msGetUserMedia;
   if (navigator.getUserMedia) {
-    document.getElementById('detect-text').innerHTML = 'cool, let\'s start';
+    detectText.innerHTML = 'cool, let\'s start 🤳';
+    detectText.style.opacity = 1;
     setTimeout(() => {
       document.getElementById('start-video-button').style.display = 'inline-block';
     }, 1000);
   } else {
-    document.getElementById('detect-text').innerHTML = 'uh, could not detect a webcam. sorry 🤷‍';
+    detectText.innerHTML = 'uh, could not detect a webcam. sorry 🤷‍';
+    detectText.style.opacity = 1;
   }
 }
 

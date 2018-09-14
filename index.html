@@ -3,37 +3,45 @@
 
 <head>
 
-
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Title</title>
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600" rel="stylesheet">
   <link rel="stylesheet" href="./css/index.css" />
 </head>
 
 <body>
-  <section id="welcome-texts">
-    <h4 id="welcome-text-1" class="welcome-text">hey there</h4>
-    <h4 id="welcome-text-2" class="welcome-text">so you want to record from your webcam?</h4>
+  <section id="welcome-texts" class="section">
+    <div class="container">
+      <h4 id="welcome-text-1" class="welcome-text">HEY THERE 👋</h4>
+      <h4 id="welcome-text-2" class="welcome-text">So you want to record from your webcam?</h4>
+    </div>
   </section>
 
-  <section id="detect-and-start">
-    <div id="detect-text"></div>
-    <button id="start-video-button" class="button">Start</button>
+  <section id="detect-and-start" class="section">
+    <div class="container">
+      <div id="detect-text" class="welcome-text">cool</div>
+      <button id="start-video-button" class="button">Start</button>
+    </div>
   </section>
 
-  <section class="video-area">
-    <video id='video'> </video>
-
-    <button id="record-start-button" class="button">Record</button>
-    <button id="record-stop-button" class="button disabled">Stop</button>
-
+  <section class="video-area" class="section">
+    <div class="container">
+       <div>
+          <video id='video'> </video>
+      </div>
+      <div class="video-controls">
+          <button id="record-start-button" class="button">🔴Record</button>
+          <button id="record-stop-button" class="button disabled">🔳Stop</button>    
+      </div>
+    </div>
   </section>
-
-  <script src="https://cdn.webrtc-experiment.com/RecordRTC.js"></script>
-  <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
-
 </body>
+
+<script src="https://cdn.webrtc-experiment.com/RecordRTC.js"></script>
+<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
 
 <script src="./js/index.js"></script>
 
