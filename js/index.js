@@ -63,6 +63,7 @@ let errorHandler = (e) => {
 
   if (e.name === 'NotAllowedError') {
     document.getElementById('detect-text').innerHTML = 'You should have given permission to use the webcam 🤷‍';
+    document.getElementById('start-video-button').style.display = 'none';
   }
   console.log('error: ' + e.name);
 }
